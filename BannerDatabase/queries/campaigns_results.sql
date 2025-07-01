@@ -26,8 +26,8 @@ Costs AS (
         c.id AS campaign_id,
         SUM(
             CASE
-                WHEN bpm.id = 2 THEN (DATEDIFF(DAY, c.start_date, c.end_date) + 1) * ISNULL(bp.price,0)
-                WHEN bpm.id = 1 THEN ISNULL(cc.click_count,0) * ISNULL(bp.price,0)
+                WHEN bpm.id = 1 THEN (DATEDIFF(DAY, c.start_date, c.end_date) + 1) * ISNULL(bp.price,0)
+                WHEN bpm.id = 2 THEN ISNULL(cc.click_count,0) * ISNULL(bp.price,0)
                 ELSE 0
             END
         ) AS total_costs

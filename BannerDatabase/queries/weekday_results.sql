@@ -7,7 +7,7 @@ WITH daily_costs AS (
         ON cbp.campaign_id = c.id
     JOIN dbo.banner_position bp
         ON bp.id = cbp.banner_position_id
-       AND bp.banner_pricing_model_id = 2
+       AND bp.banner_pricing_model_id = 1
     CROSS APPLY (
         SELECT DATEADD(DAY, v.number, c.start_date) AS day_date
         FROM master..spt_values v
@@ -25,7 +25,7 @@ daily_revenues AS (
         ON bpmt.id = o.banner_placement_id
     JOIN dbo.banner_position bp
         ON bp.id = bpmt.banner_position_id
-       AND bp.banner_pricing_model_id = 2
+       AND bp.banner_pricing_model_id = 1
     GROUP BY DATEPART(WEEKDAY, o.order_date)
 )
 SELECT
